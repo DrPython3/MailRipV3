@@ -4,6 +4,7 @@
 ## Status
 ***... work in progress!*** 
 
+2021/10/06 - Still working on the GUI part (while still learning writing GUI *lol*). Sorry for delay!
 2021/08/28 - Short update: still working on the GUI stuff, but first release should be finished at the beginning of 09.2021.
 
 While waiting for the V3 release, you can try and use the **previous version: [Mail.Rip V2](https://github.com/DrPython3/MailRipV2)**.
