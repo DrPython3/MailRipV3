@@ -1,0 +1,30 @@
+{
+  "email_titles": [
+    "MailRip Test ID",
+    "MailRip Verification Email ID",
+    "MailRip SMTP Sending Test ID",
+    "MailRip Email Test ID",
+    "MailRip Auto-Email ID"
+  ],
+  "email_firstlines": [
+    "hello and thank you for using mailrip.",
+    "this is a automated message by mailrip.",
+    "here is a new result from mailrip for you.",
+    "you receive this email because of a new result.",
+    "this is a new result sent to you by mailrip."
+  ],
+  "email_secondlines": [
+    "the following credentials are proved working.",
+    "you can grab the data of the working smtp below.",
+    "the smtp below is working and ready to use.",
+    "for more details rerad the information below.",
+    "the found smtp is hereby verified for sending emails."
+  ],
+  "email_thirdlines": [
+    "you can find all these details in the results directory, too.",
+    "check the results directory for more.",
+    "a text file with all found logins can be found in results directory.",
+    "remember all data is saved to text files within the results directory as well.",
+    "this one as well as more working logins are stored in the results directory."
+  ]
+}

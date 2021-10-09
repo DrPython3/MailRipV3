@@ -1,0 +1,18 @@
+{
+  "imapdomains": [
+    "",
+    "imap.",
+    "imaps.",
+    "imap-mail.",
+    "inbound.",
+    "mail.",
+    "email.",
+    "secure.",
+    "imapmail.",
+    "mx.",
+    "mx1.",
+    "mx2.",
+    "m.",
+    "in."
+  ]
+}
