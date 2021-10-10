@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-10-09'
-__version__ = '1'
+__date__ = '2021-10-10'
+__version__ = '2'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -18,14 +18,12 @@ Part of << Mail.Rip V3 >>
 # ---------
 
 import sys
-import os
 import json
 import uuid
 import smtplib
 import ssl
 from random import randint
 from email.message import EmailMessage
-from inc_etc import result
 
 # [FUNCTIONS]
 # -----------
@@ -73,15 +71,15 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
             + letter_thirdline + '\n'
         )
         letter = EmailMessage()
-        letter.add_header('Subject', str(f'{letter_subject}'))
-        letter.add_header('From', str(f'MailRipV3 <{target_email}>'))
-        letter.add_header('To', str(f'MailRipV3 User <{default_email}>'))
-        letter.add_header('MIME-Version', '1.0')
-        letter.add_header('Content-Type', 'text/plain;charset=UTF-8')
-        letter.add_header('X-Priority', '1')
-        letter.add_header('X-Mailer', 'Microsoft Office Outlook, Build 17.551210')
-        letter.add_header('X-MimeOLE', 'Produced By Microsoft MimeOLE V6.00.3790.1830')
+        # v2, 2021-10-10: simpler email generation
+        # letter.add_header('Subject', str(f'{letter_subject}'))
+        # letter.add_header('From', str(f'MailRipV3 <{target_email}>'))
+        # letter.add_header('To', str(f'MailRipV3 User <{default_email}>'))
+        # letter.add_header('Content-Type', 'text/plain;charset=UTF-8')
         letter.set_content(message)
+        letter['Subject'] = str(f'{letter_subject}')
+        letter['From'] = str(f'{target_email}')
+        letter['To'] = str(f'{default_email}')
         if target_port == 465:
             mailer = smtplib.SMTP_SSL(
                 host=target_host,

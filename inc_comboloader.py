@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-10-09'
-__version__ = '1'
+__date__ = '2021-10-10'
+__version__ = '2'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -18,7 +18,6 @@ Part of << Mail.Rip V3 >>
 # ---------
 
 import sys
-import os
 from datetime import datetime
 from inc_etc import result
 from inc_etc import email_verification

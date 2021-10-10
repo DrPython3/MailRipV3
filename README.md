@@ -2,14 +2,23 @@
 
 **Mail.Rip** - your **SMTP checker / SMTP cracker** and **IMAP checker / IMAP cracker** for testing mailpass combolists with a user-friendly GUI based on [tkinter](https://docs.python.org/3/library/tkinter.html)! Easy to use and working with probably all e-mail providers.
 
+# Legal Notices
+
+**This repository is only public for educational purposes!**
+
+All content provided here shall not be used for any kind of illegal activity nor for law enforcement at any time.<br>
+This restrictions apply to all cases of usage, no matter whether the whole code or just parts of it are being used.
+
+***By visiting this repository, downloading or (and) using any kind of its content (code, parts of the code, files etc.), visitors (users) hereby declare their consent without reservation.***
+
 ## Features
 
-- Written in and for Python 3.8+
-- First version with GUI
-- Works with all OS (tested on Windows, Linux and macOS)
-- Now supporting SMTP and IMAP
-- Inbox delivery test for found SMTP logins
-- Multi-threading
+- written in and for Python 3.8+
+- GUI- and NO-GUI-version
+- works with all OS (tested on Windows, Linux and macOS)
+- now supporting SMTP and IMAP
+- inbox delivery test for found SMTP logins
+- multi-threading
 
 ... and more to come!
 
@@ -20,6 +29,8 @@
 While waiting for the V3 release, you can try and use the **previous version: [Mail.Rip V2](https://github.com/DrPython3/MailRipV2)**.
 
 ### Status Logs
+
+**[2021/10/10]:** Minor updates for included stuff.<br>
 
 **[2021/10/09]:** Uploading various included or updated stuff and preparing beta release.<br>
 

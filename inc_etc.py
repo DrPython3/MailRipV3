@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-10-09'
-__version__ = '1'
+__date__ = '2021-10-10'
+__version__ = '2'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -85,5 +85,17 @@ def domain_verification(domain):
         return True
     else:
         return False
+
+def clean():
+    '''
+    NO-GUI-Version only: Provides a blank screen on purpose.
+
+    :return: None
+    '''
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+    return None
 
 # DrPython3 (C) 2021 @ GitHub.com
