@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-10-10'
-__version__ = '2'
+__date__ = '2021-10-16'
+__version__ = '2.1'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -71,7 +71,7 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
             + letter_thirdline + '\n'
         )
         letter = EmailMessage()
-        # v2, 2021-10-10: simpler email generation
+        # v1:
         # letter.add_header('Subject', str(f'{letter_subject}'))
         # letter.add_header('From', str(f'MailRipV3 <{target_email}>'))
         # letter.add_header('To', str(f'MailRipV3 User <{default_email}>'))

@@ -1,8 +1,8 @@
 {
   "email_titles": [
-    "MailRip Test ID",
-    "MailRip Verification Email ID",
-    "MailRip SMTP Sending Test ID",
+    "MailRip Test Result ID",
+    "MailRip Verification ID",
+    "MailRip Inbox Test ID",
     "MailRip Email Test ID",
     "MailRip Auto-Email ID"
   ],
