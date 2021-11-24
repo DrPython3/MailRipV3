@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-10-16'
-__version__ = '2.1'
+__date__ = '2021-11-23'
+__version__ = '2.2'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -71,11 +71,6 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
             + letter_thirdline + '\n'
         )
         letter = EmailMessage()
-        # v1:
-        # letter.add_header('Subject', str(f'{letter_subject}'))
-        # letter.add_header('From', str(f'MailRipV3 <{target_email}>'))
-        # letter.add_header('To', str(f'MailRipV3 User <{default_email}>'))
-        # letter.add_header('Content-Type', 'text/plain;charset=UTF-8')
         letter.set_content(message)
         letter['Subject'] = str(f'{letter_subject}')
         letter['From'] = str(f'{target_email}')
@@ -87,14 +82,15 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
                 timeout=float(60),
                 context=sslcontext
             )
+            mailer.ehlo()
         else:
             mailer = smtplib.SMTP(
                 host=target_host,
                 port=target_port,
                 timeout=float(60)
             )
+            mailer.ehlo()
             try:
-                mailer.ehlo()
                 mailer.starttls(context=sslcontext)
                 mailer.ehlo()
             except:

@@ -3,7 +3,7 @@
 
 __author__ = 'DrPython3'
 __date__ = '2021-10-10'
-__version__ = '2'
+__version__ = '2.1'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -81,7 +81,14 @@ def comboloader(input_file):
             except:
                 continue
     except:
-        pass
+        result(
+            output_blacklist,
+            str(f'An error occurred while importing the combos from file: {input_file}.')
+        )
+        result(
+            output_clean,
+            str(f'An error occurred while importing the combos from file: {input_file}.')
+        )
     return loaded_combos
 
 # DrPython3 (C) 2021 @ GitHub.com
