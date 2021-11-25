@@ -30,6 +30,8 @@ While waiting for the V3 release, you can try and use the **previous version: [M
 
 ### Status Logs
 
+**[2021/11/26]:** Preparing **_BETA release_** of the NO-GUI-version for open testing!<br>
+
 **[2021/10/10]:** Minor updates for included stuff.<br>
 
 **[2021/10/09]:** Uploading various included or updated stuff and preparing beta release.<br>
