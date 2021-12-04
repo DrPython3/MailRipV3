@@ -1,5 +1,5 @@
 {
-  "smtpports": [
+  "smtpports":[
     25,
     465,
     587

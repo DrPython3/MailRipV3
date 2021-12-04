@@ -1,0 +1,4 @@
+tkinter
+dnspython
+PySocks
+uuid

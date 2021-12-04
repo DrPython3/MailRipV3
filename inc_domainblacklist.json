@@ -1,13 +1,7 @@
 {
-  "domainblacklist": [
-    "gmail.com",
-    "googlemail.com",
-    "yahoo.com",
-    "hotmail.com",
+  "domainblacklist":[
     "protonmail.com",
     "yandex.ru",
-    "me.com",
-    "icloud.com",
     "0815.ru",
     "0wnd.net",
     "0wnd.org",

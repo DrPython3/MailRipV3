@@ -1,5 +1,5 @@
 {
-  "smtpservices": {
+  "smtpservices":{
     "1and1.co.uk":"smtp.1and1.com:587",
     "1and1.com":"smtp.1and1.com:587",
     "1und1.de":"smtp.1und1.de:587",

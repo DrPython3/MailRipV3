@@ -1,52 +1,95 @@
 #  Mail.Rip V3
 
-**Mail.Rip** - your **SMTP checker / SMTP cracker** and **IMAP checker / IMAP cracker** for testing mailpass combolists with a user-friendly GUI based on [tkinter](https://docs.python.org/3/library/tkinter.html)! Easy to use and working with probably all e-mail providers.
+**Mail.Rip** - your **SMTP checker / SMTP cracker** and **IMAP checker / IMAP cracker** for testing mailpass combolists!<br>
+With a user-friendly GUI based on [tkinter](https://docs.python.org/3/library/tkinter.html) - easy to use and working with all email providers so far.
 
-# Legal Notices
+#  Legal Notices
 
 **This repository is only public for educational purposes!**
 
 All content provided here shall not be used for any kind of illegal activity nor for law enforcement at any time.<br>
 This restrictions apply to all cases of usage, no matter whether the whole code or just parts of it are being used.
 
-***By visiting this repository, downloading or (and) using any kind of its content (code, parts of the code, files etc.), visitors (users) hereby declare their consent without reservation.***
+***Visitors (users) declare their consent without reservations by:***
 
-## Features
+- visiting this repository,
+- downloading or / and
+- using any kind of its content (code, parts of the code, files etc.).
 
-- written in and for Python 3.8+
-- GUI- and NO-GUI-version
-- works with all OS (tested on Windows, Linux and macOS)
-- now supporting SMTP and IMAP
-- inbox delivery test for found SMTP logins
-- multi-threading
+#  Features
 
-... and more to come!
+Mail.Rip V3 offers the following features:
 
-##  Status
+- [x] NO-GUI-version (status: BETA#1)
+- [ ] ~~GUI-version~~ (status: coming soon)
+- [x] written in and for Python 3.8+
+- [x] works with all OS (tested on Windows, Linux and macOS)
+- [x] supporting SMTP and IMAP login checking
+- [x] inbox delivery test for found SMTP logins
+- [x] multi-threading
 
-***... work in progress! Still not functional / working - see 'Status Logs' below for more information.***
+... with more to come!
 
-While waiting for the V3 release, you can try and use the **previous version: [Mail.Rip V2](https://github.com/DrPython3/MailRipV2)**.
+Feel free to ask for any improvements, new features etc. in the discussion section.<br>
+Meanwhile have an eye on the status information below for information about latest updates.
 
-### Status Logs
+#  Status
 
-**[2021/11/26]:** Preparing **_BETA release_** of the NO-GUI-version for open testing!<br>
+***INFO: BETA#1 started, work in progress! See 'Status Logs' for detailed information.***
 
-**[2021/10/10]:** Minor updates for included stuff.<br>
+You can also try and use the **previous version: [Mail.Rip V2](https://github.com/DrPython3/MailRipV2)**. <br>
+Nevertheless, help improving Mail.Rip V3! Test BETA versions and report any issues you notice, please.
 
-**[2021/10/09]:** Uploading various included or updated stuff and preparing beta release.<br>
+##  Status Logs
 
-**[2021/10/06]:** Still working on the GUI part (while still learning writing GUI *lol*).<br>
+**[2021/12/04]:**     **_NO-GUI-version_** available (BETA#1)! **_GUI-version_** coming soon (BETA).<br>
 
-**[2021/08/28]:** Short update: still working on the GUI stuff, but first release should be finished at the beginning of 09.2021.
+**[2021/11/26]:**     Preparing **_BETA release_** of the NO-GUI-version for open testing!<br>
 
-##  Support this project
+**[2021/10/10]:**     Minor updates for included stuff.<br>
 
-Mail.Rip V3 provides many improvements. So, there is a lot of work to be done.
+**[2021/10/09]:**     Uploading various included or updated stuff and preparing beta release.<br>
 
-Because I can only work on this project in my free time, consider a donation, please:
+**[2021/10/06]:**     Still working on the GUI part (while still learning writing GUI *lol*).<br>
+
+**[2021/08/28]:**     Short update: still working on the GUI stuff.
+
+#  Quick Start Guide
+
+##  NO-GUI-version (command line)
+
+After downloading or cloning all files from this repository, install the required Python packages.<br>
+Therefor, use the _requirements.txt_ with PIP:
+
+`pip install -r requirements.txt`
+
+Wait until the installation of all packages has been finished.<br>
+Make sure your combofile is encoded with UTF-8 and start the checker:
+
+`python MailRipV3_NOGUI.py`
+
+Now follow the messages on your screen. You have to set some options, first.<br>
+A window for choosing your combofile will show up afterwards.
+
+Finally, confirm the start of the checker and Mail.Rip V3 wil do the rest for you.<br>
+After checking of your combos, look into the results directory to retrieve your hits.
+
+##  GUI-version
+
+_Not available yet._
+
+#  Detailed Information
+
+_Not available yet._
+
+#  Support this Project
+
+Mail.Rip V3 provides many improvements regarding previous versions.<br>
+But there is still a lot of work to be done!
+
+Tip or donate for faster development, please:
 
 -  **BTC:** 1KFMr9bJJh4MctKAy1kzpaqy6m5b3V2VRU
 -  **LTC:** LX1v9NQfMAvLJGWFhJSHTBWygeg8MZUJbK
 
-Every donation helps and provides a bit more time to get V3 ready for you!
+Every donation helps!
