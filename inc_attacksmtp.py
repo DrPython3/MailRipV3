@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-12-04'
-__version__ = 'BETA(1)'
+__date__ = '2021-12-05'
+__version__ = 'BETA(1.1)'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -18,12 +18,32 @@ Part of << Mail.Rip V3: https://github.com/DrPython3/MailRipV3 >>
 # ---------
 
 import sys
-import json
 import ssl
 import smtplib
+import json
 from inc_testmail import mailer
 from inc_etc import result
 from inc_mxlookup import get_host
+
+# [VARIABLES AND OTHER STUFF]
+# ---------------------------
+
+try:
+    # load SMTP lists and dictionary from JSON files:
+    with open('inc_smtpdomains.json') as inc_smtpdomains:
+        load_smtpdomains = json.load(inc_smtpdomains)
+        smtp_domains = (load_smtpdomains['smtpdomains'])
+    with open('inc_smtpports.json') as inc_smtpports:
+        load_smtpports = json.load(inc_smtpports)
+        smtp_ports = (load_smtpports['smtpports'])
+    with open('inc_smtpservices.json') as inc_smtpservices:
+        load_smtpservices = json.load(inc_smtpservices)
+        smtp_services = (load_smtpservices['smtpservices'])
+except:
+    # on errors, set empty lists and dictionary:
+    smtp_domains = []
+    smtp_ports = []
+    smtp_services = {}
 
 # [FUNCTIONS]
 # -----------
@@ -54,22 +74,10 @@ def smtpchecker(default_timeout, default_email, target):
         connection_ok = False
         checker_result = False
         email_sent = False
-        try:
-            # load lists and dictionaries from json-files:
-            with open('inc_smtpdomains.json') as inc_smtpdomains:
-                load_domains = json.load(inc_smtpdomains)
-                smtp_domains = (load_domains['smtpdomains'])
-            with open('inc_smtpports.json') as inc_smtpports:
-                load_ports = json.load(inc_smtpports)
-                smtp_ports = (load_ports['smtpports'])
-            with open('inc_smtpservices.json') as inc_smtpservices:
-                load_services = json.load(inc_smtpservices)
-                smtp_services = (load_services['smtpservices'])
-        except:
-            # on errors set empty lists and dictionary:
-            smtp_domains = []
-            smtp_ports = []
-            smtp_services = {}
+        # included lists and dictionary for SMTP checker:
+        global smtp_domains
+        global smtp_ports
+        global smtp_services
         # prepare target information:
         new_target = str(str(target).replace('\n', ''))
         target_email, target_password = new_target.split(':')

@@ -20,7 +20,7 @@ This restrictions apply to all cases of usage, no matter whether the whole code 
 
 Mail.Rip V3 offers the following features:
 
-- [x] NO-GUI-version (status: BETA#1)
+- [x] NO-GUI-version (status: BETA#1.1)
 - [ ] ~~GUI-version~~ (status: coming soon)
 - [x] written in and for Python 3.8+
 - [x] works with all OS (tested on Windows, Linux and macOS)
@@ -41,6 +41,8 @@ You can also try and use the **previous version: [Mail.Rip V2](https://github.co
 Nevertheless, help improving Mail.Rip V3! Test BETA versions and report any issues you notice, please.
 
 ##  Status Logs
+
+**[2021/12/05]:**     **_NO-GUI-version_** release BETA#1.1 available! <br>
 
 **[2021/12/04]:**     **_NO-GUI-version_** available (BETA#1)! **_GUI-version_** coming soon (BETA).<br>
 

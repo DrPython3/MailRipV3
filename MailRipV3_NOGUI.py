@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-12-04'
-__version__ = 'BETA(1)'
+__date__ = '2021-12-05'
+__version__ = 'BETA(1.1)'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -35,10 +35,10 @@ Further Information and Help at:
 
 import sys
 import threading
+import inc_attackimap as ic
+import inc_attacksmtp as sc
 from queue import Queue
 from time import sleep
-from inc_attackimap import imapchecker
-from inc_attacksmtp import smtpchecker
 from inc_comboloader import comboloader
 from inc_etc import clean
 from inc_etc import get_combofile_nogui
@@ -65,7 +65,6 @@ Tip or donate for faster development:
 '''
 
 # global variables and stuff:
-
 targets_total = int(0)
 targets_left = int(0)
 hits = int(0)
@@ -95,13 +94,13 @@ def checker_thread(checker_type, default_timeout, default_email):
         result = False
         try:
             if checker_type == 'smtp':
-                result = smtpchecker(
+                result = sc.smtpchecker(
                     float(default_timeout),
                     str(default_email),
                     str(f'{target}')
                 )
             elif checker_type == 'imap':
-                result = imapchecker(
+                result = ic.imapchecker(
                     float(default_timeout),
                     str(f'{target}')
                 )
@@ -115,7 +114,7 @@ def checker_thread(checker_type, default_timeout, default_email):
         targets_left -= 1
         checker_queue.task_done()
     # cooldown for checker thread:
-    sleep(1.0)
+    sleep(3.0)
     return None
 
 def checker(checker_type, default_threads, default_timeout, default_email, combofile):
@@ -162,7 +161,7 @@ def checker(checker_type, default_threads, default_timeout, default_email, combo
                 checker_queue.put(target)
             print('Done! Checker started and running - see stats in window title.\n\n')
             # checker stats in window title:
-            while targets_left >= 0:
+            while targets_left > 0:
                 try:
                     sleep(1.0)
                     titlestats = str(f'LEFT: {str(targets_left)} # HITS: {str(hits)} # FAILS: {str(fails)}')

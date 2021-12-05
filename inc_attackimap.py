@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-12-04'
-__version__ = 'BETA(1)'
+__date__ = '2021-12-05'
+__version__ = 'BETA(1.1)'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -18,11 +18,31 @@ Part of << Mail.Rip V3: https://github.com/DrPython3/MailRipV3 >>
 # ---------
 
 import sys
-import json
 import ssl
 import socket
 import imaplib
+import json
 from inc_etc import result
+
+# [VARIABLES AND OTHER STUFF]
+# ---------------------------
+
+try:
+    # load IMAP lists and dictionary from JSON files:
+    with open('inc_imapdomains.json') as inc_imapdomains:
+        load_imapdomains = json.load(inc_imapdomains)
+        imap_domains = (load_imapdomains['imapdomains'])
+    with open('inc_imapports.json') as inc_imapports:
+        load_imapports = json.load(inc_imapports)
+        imap_ports = (load_imapports['imapports'])
+    with open('inc_imapservices.json') as inc_imapservices:
+        load_imapservices = json.load(inc_imapservices)
+        imap_services = (load_imapservices['imapservices'])
+except:
+    # on errors, set empty lists and dictionary:
+    imap_domains = []
+    imap_ports = []
+    imap_services = {}
 
 # [FUNCTIONS]
 # -----------
@@ -41,8 +61,8 @@ def imapchecker(default_timeout, target):
         sslcontext = ssl.create_default_context()
         # because imaplib does not support timeout, socket here:
         socket.setdefaulttimeout(float(default_timeout))
-        output_hits = 'imap_valid'
-        output_checked = 'imap_checked'
+        output_hits = str('imap_valid')
+        output_checked = str('imap_checked')
         target_email = str('')
         target_user = str('')
         target_password = str('')
@@ -54,22 +74,10 @@ def imapchecker(default_timeout, target):
         md5_login = False
         login_valid = False
         checker_result = False
-        # try to load lists and dictionary:
-        try:
-            with open('inc_imapdomains.json') as inc_imapdomains:
-                load_domains = json.load(inc_imapdomains)
-                imap_domains = (load_domains['imapdomains'])
-            with open('inc_imapports.json') as inc_imapports:
-                load_ports = json.load(inc_imapports)
-                imap_ports = (load_ports['imapports'])
-            with open('inc_imapservices.json') as inc_imapservices:
-                load_services = json.load(inc_imapservices)
-                imap_services = (load_services['imapservices'])
-        # on errors, set empty lists and dictionary:
-        except:
-            imap_domains = []
-            imap_ports = []
-            imap_services = {}
+        # included lists and dictionary for IMAP checker:
+        global imap_domains
+        global imap_ports
+        global imap_services
         # prepare target information:
         new_target = str(str(target).replace('\n', ''))
         target_email, target_password = new_target.split(':')
@@ -171,8 +179,6 @@ def imapchecker(default_timeout, target):
                         if str('OK') in login_response:
                             # declare login valid:
                             login_valid = True
-                            # write log:
-                            result(output_checked, str(f'{new_target};result=md5-login valid'))
                     # on errors try login with user ID from email:
                     except:
                         try:
@@ -184,10 +190,8 @@ def imapchecker(default_timeout, target):
                             if str('OK') in login_response:
                                 # declare login valid:
                                 login_valid = True
-                                # write log:
-                                result(output_checked, str(f'{new_target};result=md5-login valid'))
                         except:
-                            result(output_checked, str(f'{new_target};result=login failed'))
+                            result(output_checked, str(f'{new_target};result=md5-login failed'))
                 else:
                     pass
             except:
@@ -203,8 +207,6 @@ def imapchecker(default_timeout, target):
                     if str('OK') in login_response:
                         # declare login valid:
                         login_valid = True
-                        # write log:
-                        result(output_checked, str(f'{new_target};result=login valid'))
                 # on errors try login with user ID from email:
                 except:
                     try:
@@ -216,8 +218,6 @@ def imapchecker(default_timeout, target):
                         if str('OK') in login_response:
                             # declare login valid:
                             login_valid = True
-                            # write log:
-                            result(output_checked, str(f'{new_target};result=login valid'))
                     except:
                         result(output_checked, str(f'{new_target};result=login failed'))
         # no connection established, write log for target:
