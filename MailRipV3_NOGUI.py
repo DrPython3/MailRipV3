@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-12-05'
-__version__ = 'BETA(1.1)'
+__date__ = '2021-12-06'
+__version__ = 'BETA(1.2)'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -185,13 +185,13 @@ def checker(checker_type, default_threads, default_timeout, default_email, combo
 
 def main():
     '''
-    Function for main menu and checker setup.
+    Simple function for main menu and checker setup.
 
     :return: None
     '''
     # set default values for needed variables:
     default_timeout = float(3.0)
-    default_threads = int(1)
+    default_threads = int(5)
     default_email = str('user@email.com')
     combofile = str('combos.txt')
     checker_type = str('smtp')
@@ -199,16 +199,17 @@ def main():
     print(main_logo + '\n\n')
     # get values for variables from user input:
     try:
-        # user's email address for testmailer (SMTP only):
-        default_email = str(
-            input('Your Email [e.g. your@email.com]: ')
-        )
         # type of checking (SMTP / IMAP):
         checker_choice = int(
             input('Checker Type [1 = smtp or 2 = imap]: ')
         )
         if checker_choice == 2:
             checker_type = 'imap'
+        if checker_choice == 1:
+            # (SMTP only) user's email address for testmailer:
+            default_email = str(
+                input('Your Email [e.g. your@email.com]: ')
+            )
         # threads to use:
         default_threads = int(
             input('Checker Threads [e.g. 1]: ')
@@ -292,7 +293,6 @@ def main():
 # [MAIN]
 # ------
 
-while True:
-    main()
+main()
 
 # DrPython3 (C) 2021 @ GitHub.com

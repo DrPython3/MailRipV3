@@ -20,12 +20,13 @@ This restrictions apply to all cases of usage, no matter whether the whole code 
 
 Mail.Rip V3 offers the following features:
 
-- [x] NO-GUI-version (status: BETA#1.1)
+- [x] NO-GUI-version (status: BETA#1.2)
 - [ ] ~~GUI-version~~ (status: coming soon)
 - [x] written in and for Python 3.8+
 - [x] works with all OS (tested on Windows, Linux and macOS)
-- [x] supporting SMTP and IMAP login checking
-- [x] inbox delivery test for found SMTP logins
+- [x] SMTP checker with inbuilt email delivery test
+- [x] IMAP checker (very fast)
+- [x] well sorted logging for results
 - [x] multi-threading
 
 ... with more to come!
@@ -35,14 +36,16 @@ Meanwhile have an eye on the status information below for information about late
 
 #  Status
 
-***INFO: BETA#1 started, work in progress! See 'Status Logs' for detailed information.***
+***INFO: BETA started! See 'Status Logs' for detailed information.***
 
 You can also try and use the **previous version: [Mail.Rip V2](https://github.com/DrPython3/MailRipV2)**. <br>
 Nevertheless, help improving Mail.Rip V3! Test BETA versions and report any issues you notice, please.
 
 ##  Status Logs
 
-**[2021/12/05]:**     **_NO-GUI-version_** release BETA#1.1 available! <br>
+**[2021/12/06]:**     **_NO-GUI-version_** release BETA#1.2: improved SMTP-checker and mainfile.<br>
+
+**[2021/12/05]:**     **_NO-GUI-version_** release BETA#1.1: several minor improvements.<br>
 
 **[2021/12/04]:**     **_NO-GUI-version_** available (BETA#1)! **_GUI-version_** coming soon (BETA).<br>
 

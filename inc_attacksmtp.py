@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'DrPython3'
-__date__ = '2021-12-05'
-__version__ = 'BETA(1.1)'
+__date__ = '2021-12-06'
+__version__ = 'BETA(1.2)'
 __contact__ = 'https://github.com/DrPython3'
 
 '''
@@ -30,9 +30,6 @@ from inc_mxlookup import get_host
 
 try:
     # load SMTP lists and dictionary from JSON files:
-    with open('inc_smtpdomains.json') as inc_smtpdomains:
-        load_smtpdomains = json.load(inc_smtpdomains)
-        smtp_domains = (load_smtpdomains['smtpdomains'])
     with open('inc_smtpports.json') as inc_smtpports:
         load_smtpports = json.load(inc_smtpports)
         smtp_ports = (load_smtpports['smtpports'])
@@ -41,7 +38,6 @@ try:
         smtp_services = (load_smtpservices['smtpservices'])
 except:
     # on errors, set empty lists and dictionary:
-    smtp_domains = []
     smtp_ports = []
     smtp_services = {}
 
@@ -173,53 +169,7 @@ def smtpchecker(default_timeout, default_email, target):
                         break
                     except:
                         continue
-            # if MX-lookup fails, try to connect using common values:
-            if connection_ok == False:
-                for subdomain in smtp_domains:
-                    test_host = str(str(subdomain) + str(target_email.split('@')[1]))
-                    for next_port in smtp_ports:
-                        # try to establish connection to generated host:
-                        try:
-                            # SSL-connection:
-                            if int(next_port) == int(465):
-                                smtp_connection = smtplib.SMTP_SSL(
-                                    host=str(test_host),
-                                    port=int(next_port),
-                                    timeout=default_timeout,
-                                    context=sslcontext
-                                )
-                                smtp_connection.ehlo()
-                                # change variables for established connections:
-                                target_host = str(test_host)
-                                target_port = int(next_port)
-                                connection_ok = True
-                            else:
-                                # regular connection:
-                                smtp_connection = smtplib.SMTP(
-                                    host=str(test_host),
-                                    port=int(next_port),
-                                    timeout=default_timeout
-                                )
-                                smtp_connection.ehlo()
-                                # TLS:
-                                try:
-                                    smtp_connection.starttls(
-                                        context=sslcontext
-                                    )
-                                    smtp_connection.ehlo()
-                                except:
-                                    pass
-                                # change variables for established connections:
-                                target_host = str(test_host)
-                                target_port = int(next_port)
-                                connection_ok = True
-                            break
-                        except:
-                            continue
-                    if connection_ok == True:
-                        break
-                    else:
-                        continue
+        # checking for SMTP host with common domains deleted here!
         # with connection established, check login details:
         if connection_ok == True:
             try:
